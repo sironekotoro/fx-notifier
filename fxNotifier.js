@@ -1,4 +1,13 @@
 /**
+ * fx-notifier
+ * Developed and maintained via GitHub:
+ * https://github.com/sironekotoro/fx-notifier
+ *
+ * This file is synced using clasp.
+ */
+
+
+/**
  * メイン関数：為替レートを取得し、記録して、Chatworkに投稿する
  * GASのトリガーはこの関数に設定する
  */
