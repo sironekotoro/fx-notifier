@@ -1,6 +1,7 @@
 # fx-notifier
 
-平日午前10時に USD/JPY の為替レートを取得し、Google スプレッドシートに記録、Chatwork に自動通知する Google Apps Script です。
+Google スプレッドシートと Chatwork を連携し、USD/JPY の為替レートを自動的に取得・記録・通知する Google Apps Script プロジェクトです。
+日次通知などの自動実行は、GAS の時間トリガーを用いて設定できます。
 
 ---
 
@@ -9,7 +10,7 @@
 - データ取得：`GOOGLEFINANCE("CURRENCY:USDJPY")`
 - 記録先：Google スプレッドシート（`為替レート` シート）
 - 通知先：Chatwork（API使用）
-- 実行方法：GAS の時間主導型トリガー（平日10時）
+- 実行方法：GAS の時間主導型トリガーを用いた自動化が可能（例：平日午前10時）
 
 ---
 
@@ -23,7 +24,7 @@ GitHub や clasp を使わずに、「GoogleスプレッドシートとApps Scri
 2. メニュー「拡張機能 → Apps Script」でエディタを開く
 3. このリポジトリの `fxNotifier.js` の内容をコピー＆貼り付け
 4. スクリプトプロパティを手動で登録
-5. トリガーを設定（平日10時）
+5. トリガーを設定（平日10時など）
 
 ### 📝 スクリプトプロパティの登録手順
 
@@ -85,6 +86,14 @@ function setSecrets() {
 - 種別：時間主導型
 - 時間：平日（月〜金）午前10時（9時〜10時の範囲で設定）
 
+### 5. 変更内容を GAS に反映
+
+```bash
+clasp push
+```
+
+これでローカルのコードが Google Apps Script 側に反映されます。
+
 ---
 
 ## 📤 Chatwork に投稿される内容（例）
@@ -92,7 +101,7 @@ function setSecrets() {
 ```
 [info][title]【為替Bot】USD/JPYレート通知[/title]
 2025-05-17 10:00 時点
-為替レート: 155.27 円
+為替レート: 145.27 円
 [/info]
 ```
 
@@ -100,7 +109,7 @@ function setSecrets() {
 
 ## 👤 作者・メンテナンス
 
-- 作成者：sironekotoro
+- 作成者：[@sironekotoro](https://github.com/sironekotoro)
 - 引き継ぎ時は会社用 Google アカウントにシートとスクリプトをコピーし、スクリプトプロパティとトリガーを再設定してください。
 - GitHubでの履歴管理と clasp による同期を併用することで、安全かつ透明な運用が可能です。
 
